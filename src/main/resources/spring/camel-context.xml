@@ -22,19 +22,18 @@
             <apiProperty key="api.description" value="Greetings in JSON or XML"/>
         </restConfiguration>
         <rest bindingMode="auto"
-        	id="rest-a88eecfc-75d1-4a8f-b579-b1357236231c" path="/hello/{name}">
-        	<description>Greet User based on path parameter</description>
+            id="rest-a88eecfc-75d1-4a8f-b579-b1357236231c" path="/hello/{name}">
+            <description id="description-b476ff76-0643-4a32-879c-d0c847467afc">Greet User based on path parameter</description>
             <get id="20224c7c-ee53-4fc8-b1e2-2189a898e3be" outType="org.i3.model.Hello">
-            	<param 
-            	name="name" type="path" dataType="String" 
-            	description="Parameter to add in the greetings" 
-            	required="true" />
+                <param dataType="String"
+                    description="Parameter to add in the greetings"
+                    name="name" required="true" type="path"/>
                 <to uri="bean:helloService?method=greetUser"/>
             </get>
         </rest>
         <rest bindingMode="auto"
             id="rest-9322fe27-9af2-47af-9639-80247bf831a4" path="/hello">
-            <description>Greet the world</description>
+            <description id="description-230b2601-7b8f-451e-96ff-ab7716746d58">Greet the world</description>
             <get id="71d44d26-9ba2-4d8f-ba7b-6fe472dc74a9" outType="org.i3.model.Hello">
                 <to uri="bean:helloService?method=greetWorld"/>
             </get>
