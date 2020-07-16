@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <restConfiguration apiContextPath="api-docs"
+            apiVendorExtension="true" component="spark-rest"
+            host="localhost" port="8080">
+            <!-- setup swagger api descriptions -->
+            <apiProperty key="api.version" value="1.0.0"/>
+            <apiProperty key="api.title" value="Transform API"/>
+            <apiProperty key="api.description" value="Transform message from JSON to XML and vice-versa"/>
+        </restConfiguration>
+        <rest id="rest-68077129-cb85-40db-a87b-dc10fa2482ce" path="/json">
+            <post consumes="application/json"
+                id="434c7a5c-63d5-4eb7-a841-45091868d3e4" produces="application/xml">
+                <description>Transform body message from JSON to XML</description>
+                <to uri="direct:proxyJson"/>
+            </post>
+        </rest>
+        <rest id="rest-1e2aebdb-879e-4b61-b307-492ea0c946f6" path="/xml">
+            <post consumes="application/xml"
+                id="50082316-7514-4c31-9989-0df0d666c112" produces="application/json">
+                <description>Transform body message from XML to JSON</description>
+                <to uri="direct:proxyXml"/>
+            </post>
+        </rest>
+    </camelContext>
+</beans>
