@@ -11,9 +11,17 @@ import org.springframework.stereotype.Service;
 public class HelloServiceImpl implements HelloService {
 
 	@Override
-	public Hello greeting(Exchange exchange) {
+	public Hello greetWorld(Exchange exchange) {
 		Hello hello = new Hello();
 		hello.setGreeting("Hello World");
+		hello.setTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
+		return hello;
+	}
+
+	@Override
+	public Hello greetUser(Exchange exchange) {
+		Hello hello = new Hello();
+		hello.setGreeting("Hello " + exchange.getIn().getHeader("name"));
 		hello.setTime(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss")));
 		return hello;
 	}

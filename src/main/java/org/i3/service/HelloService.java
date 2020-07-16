@@ -5,5 +5,6 @@ import org.i3.model.Hello;
 
 public interface HelloService {
 
-	Hello greeting(Exchange exchange);
+	Hello greetWorld(Exchange exchange);
+	Hello greetUser(Exchange exchange);
 }

@@ -21,16 +21,16 @@
             <apiProperty key="api.title" value="Hello API"/>
             <apiProperty key="api.description" value="Greetings in JSON or XML"/>
         </restConfiguration>
-        <rest bindingMode="json"
-            id="rest-68077129-cb85-40db-a87b-dc10fa2482ce" path="/hello/json">
-            <get id="47908bcc-1680-4ee9-9688-0b3673eadb62" outType="org.i3.model.Hello">
-                <to uri="bean:helloService?method=greeting"/>
+        <rest bindingMode="auto"
+        	id="rest-a88eecfc-75d1-4a8f-b579-b1357236231c" path="/hello/{name}">
+            <get id="20224c7c-ee53-4fc8-b1e2-2189a898e3be" outType="org.i3.model.Hello">
+                <to uri="bean:helloService?method=greetUser"/>
             </get>
         </rest>
-        <rest bindingMode="xml"
-            id="rest-1e2aebdb-879e-4b61-b307-492ea0c946f6" path="/hello/xml">
-            <get id="c7750cba-9000-4290-bec0-0eb43f7edc95" outType="org.i3.model.Hello">
-                <to uri="bean:helloService?method=greeting"/>
+        <rest bindingMode="auto"
+            id="rest-9322fe27-9af2-47af-9639-80247bf831a4" path="/hello">
+            <get id="71d44d26-9ba2-4d8f-ba7b-6fe472dc74a9" outType="org.i3.model.Hello">
+                <to uri="bean:helloService?method=greetWorld"/>
             </get>
         </rest>
     </camelContext>
