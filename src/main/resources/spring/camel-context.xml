@@ -6,22 +6,15 @@
             apiVendorExtension="true" component="spark-rest"
             host="localhost" port="8080">
             <!-- setup swagger api descriptions -->
-            <apiProperty key="api.version" value="1.0.0"/>
+            <apiProperty key="api.version" value="1.2.0"/>
             <apiProperty key="api.title" value="Transform API"/>
             <apiProperty key="api.description" value="Transform message from JSON to XML and vice-versa"/>
         </restConfiguration>
-        <rest id="rest-68077129-cb85-40db-a87b-dc10fa2482ce" path="/json">
-            <post consumes="application/json"
-                id="434c7a5c-63d5-4eb7-a841-45091868d3e4" produces="application/xml">
-                <description>Transform body message from JSON to XML</description>
-                <to uri="direct:proxyJson"/>
-            </post>
-        </rest>
-        <rest id="rest-1e2aebdb-879e-4b61-b307-492ea0c946f6" path="/xml">
-            <post consumes="application/xml"
-                id="50082316-7514-4c31-9989-0df0d666c112" produces="application/json">
-                <description>Transform body message from XML to JSON</description>
-                <to uri="direct:proxyXml"/>
+        <rest consumes="application/xml;application/json"
+            id="rest-6fc4a03f-5066-4770-9022-f627d88b37cd" path="/proxy" produces="application/xml;application/json">
+            <post id="72d518ec-acd4-42b4-aeb0-8d70ce6506e6">
+            	<description>Transform message based on Content-Type header</description>
+                <to uri="direct:proxy"/>
             </post>
         </rest>
     </camelContext>

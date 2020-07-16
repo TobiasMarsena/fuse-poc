@@ -12,12 +12,15 @@ public class TransformRoute extends RouteBuilder {
 		
 		XmlJsonDataFormat xmlJson = new XmlJsonDataFormat();
 		
-		from("direct:proxyXml")
-			.marshal(xmlJson)
-		;
-		
-		from("direct:proxyJson")
-			.unmarshal(xmlJson)
+		from("direct:proxy")
+			.choice()
+				.when().simple("${header.Content-Type} == 'application/xml'")
+					.marshal(xmlJson)
+				.when().simple("${header.Content-Type} == 'application/json'")
+					.unmarshal(xmlJson)
+				.otherwise()
+					.setBody(simple("Wrong content type"))
+			.end()
 		;
 	}
 }
