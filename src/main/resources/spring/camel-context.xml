@@ -13,7 +13,7 @@
         <rest consumes="application/xml;application/json"
             id="rest-6fc4a03f-5066-4770-9022-f627d88b37cd" path="/proxy" produces="application/xml;application/json">
             <post id="72d518ec-acd4-42b4-aeb0-8d70ce6506e6">
-            	<description>Transform message based on Content-Type header</description>
+                <description>Transform message based on Content-Type header</description>
                 <to uri="direct:proxy"/>
             </post>
         </rest>

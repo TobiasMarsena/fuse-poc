@@ -1,5 +1,6 @@
 package org.i3.route;
 
+import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.dataformat.xmljson.XmlJsonDataFormat;
 import org.springframework.stereotype.Component;
@@ -19,7 +20,8 @@ public class TransformRoute extends RouteBuilder {
 				.when().simple("${header.Content-Type} == 'application/json'")
 					.unmarshal(xmlJson)
 				.otherwise()
-					.setBody(simple("Wrong content type"))
+					.setBody(simple("Content type must be XML or JSON"))
+					.setHeader(Exchange.HTTP_RESPONSE_CODE, constant("500"))
 			.end()
 		;
 	}
