@@ -8,8 +8,8 @@
   <name>Fuse :: 3Scale</name>
   <description>Fuse project with 3Scale API Management</description>
   <properties>
-    <fuse.version>7.6.0.fuse-760027-redhat-00001</fuse.version>
     <maven-compiler-plugin.version>3.6.0</maven-compiler-plugin.version>
+    <fuse.version>7.6.0.fuse-760027-redhat-00001</fuse.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
   </properties>
@@ -46,13 +46,18 @@
       <artifactId>camel-swagger-java-starter</artifactId>
     </dependency>
     <dependency>
-    	<groupId>org.apache.camel</groupId>
-    	<artifactId>camel-jaxb</artifactId>
-    	</dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jaxb</artifactId>
+    </dependency>
     <dependency>
-    	<groupId>org.apache.camel</groupId>
-    	<artifactId>camel-jackson</artifactId>
-    	</dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jackson</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jacksonxml</artifactId>
+      <version>2.21.0.fuse-760027-redhat-00001</version>
+    </dependency>
   </dependencies>
   <repositories>
     <repository>

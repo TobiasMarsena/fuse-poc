@@ -5,6 +5,9 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 @XmlRootElement(name = "hello")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Hello {
@@ -12,6 +15,8 @@ public class Hello {
 	private String greeting;
 	@XmlElement
 	private String time;
+	@JsonInclude(Include.NON_NULL)
+	private User user;
 	
 	public Hello() {
 	}
@@ -28,10 +33,17 @@ public class Hello {
 	public void setTime(String time) {
 		this.time = time;
 	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	@Override
 	public String toString() {
-		return "Hello [greeting=" + greeting + ", time=" + time + "]";
+		return "Hello [greeting=" + greeting + ", time=" + time + ", user=" + user + "]";
 	}
 	
+
 }

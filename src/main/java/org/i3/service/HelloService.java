@@ -7,4 +7,5 @@ public interface HelloService {
 
 	Hello greetWorld(Exchange exchange);
 	Hello greetUser(Exchange exchange);
+	Hello greetEchoPost(Exchange exchange);
 }
