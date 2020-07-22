@@ -2,19 +2,55 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <dataFormats>
+            <jaxb contentTypeHeader="false" contextPath="org.i3.model"
+                filterNonXmlChars="false" fragment="false" id="jaxb"
+                ignoreJAXBElement="false" mustBeJAXBElement="false"
+                objectFactory="false" prettyPrint="false" schemaSeverityLevel="0"/>
+            <json allowJmsType="false" allowUnmarshallType="false"
+                contentTypeHeader="false"
+                enableJaxbAnnotationModule="false" id="jackson"
+                library="Jackson" prettyPrint="false"
+                useDefaultObjectMapper="true" useList="false"/>
+        </dataFormats>
         <restConfiguration apiContextPath="api-docs"
             apiVendorExtension="true" component="spark-rest" port="8080">
             <!-- setup swagger api descriptions -->
             <apiProperty key="api.version" value="1.2.0"/>
-            <apiProperty key="api.title" value="Transform API"/>
-            <apiProperty key="api.description" value="Transform message from JSON to XML and vice-versa"/>
+            <apiProperty key="api.title" value="Hello API"/>
+            <apiProperty key="api.description" value="Greetings in JSON or XML"/>
         </restConfiguration>
-        <rest consumes="application/xml;application/json"
-            id="rest-6fc4a03f-5066-4770-9022-f627d88b37cd" path="/proxy" produces="application/xml;application/json">
-            <post id="72d518ec-acd4-42b4-aeb0-8d70ce6506e6">
-                <description>Transform message based on Content-Type header</description>
-                <to uri="direct:proxy"/>
+        <rest bindingMode="json"	
+            id="rest-e9c64780-2ba3-4b1b-8073-c981f55498bf" path="/postJson">	
+            <post id="2843668b-a2a2-4694-ab9c-c5c75dd4ca24"	
+                outType="org.i3.model.Hello" type="org.i3.model.User">	
+                <to uri="bean:helloService?method=greetEchoPost"/>	
+            </post>	
+        </rest>
+        
+        <rest id="rest-cdb365c9-047a-4bc2-97e2-f0f15176d4a1" path="/postXml">
+            <post id="e6e351e5-928f-4727-9ae0-1ec5bfe8d5ba"
+                outType="org.i3.model.Hello" type="org.i3.model.User">
+                <to uri="bean:helloService?method=greetEchoPost"/>
             </post>
+        </rest>
+        
+        <rest bindingMode="auto"
+            id="rest-a88eecfc-75d1-4a8f-b579-b1357236231c" path="/hello/{name}">
+            <description>Greet User based on path parameter</description>
+            <get id="20224c7c-ee53-4fc8-b1e2-2189a898e3be" outType="org.i3.model.Hello">
+                <param dataType="String"
+                    description="Parameter to add in the greetings"
+                    name="name" required="true" type="path"/>
+                <to uri="bean:helloService?method=greetUser"/>
+            </get>
+        </rest>
+        <rest bindingMode="auto"
+            id="rest-9322fe27-9af2-47af-9639-80247bf831a4" path="/hello">
+            <description>Greet the world</description>
+            <get id="71d44d26-9ba2-4d8f-ba7b-6fe472dc74a9" outType="org.i3.model.Hello">
+                <to uri="bean:helloService?method=greetWorld"/>
+            </get>
         </rest>
     </camelContext>
 </beans>
