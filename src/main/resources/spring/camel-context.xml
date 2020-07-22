@@ -3,8 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring       http://camel.apache.org/schema/spring/camel-spring.xsd">
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
         <restConfiguration apiContextPath="api-docs"
-            apiVendorExtension="true" component="spark-rest"
-            host="localhost" port="8080">
+            apiVendorExtension="true" component="spark-rest" port="8080">
             <!-- setup swagger api descriptions -->
             <apiProperty key="api.version" value="1.2.0"/>
             <apiProperty key="api.title" value="Transform API"/>
