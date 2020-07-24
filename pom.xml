@@ -49,8 +49,7 @@
     <dependency>
     	<groupId>org.apache.camel</groupId>
     	<artifactId>camel-netty-http-starter</artifactId>
-    	<version>3.0.0-RC3</version>
-    </dependency>
+    	</dependency>
   </dependencies>
   <repositories>
     <repository>

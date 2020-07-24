@@ -1,5 +1,6 @@
 package org.i3.route;
 
+import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.dataformat.xmljson.XmlJsonDataFormat;
 import org.springframework.stereotype.Component;
@@ -16,6 +17,11 @@ public class TransformRoute extends RouteBuilder {
 			.choice()
 				.when().simple("${header.CamelHttpMethod} != 'GET' && ${header.Content-Type} == 'application/xml'")
 					.marshal(xmlJson)
+					.toD("netty-http:"
+			                + "${headers." + Exchange.HTTP_SCHEME + "}://"
+			                + "${headers." + Exchange.HTTP_HOST + "}:"
+			                + "${headers." + Exchange.HTTP_PORT + "}"
+			                + "${headers." + Exchange.HTTP_PATH + "}")
 				.when().simple("${header.CamelHttpMethod} != 'GET' && ${header.Content-Type} == 'application/json'")
 					.unmarshal(xmlJson)
 			.end()
