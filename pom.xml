@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.i3</groupId>
   <artifactId>camel-fuse-3scale</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>1.2.1</version>
   <name>Fuse :: 3Scale</name>
   <description>Fuse project with 3Scale API Management</description>
   <properties>
@@ -48,7 +48,19 @@
     </dependency>
     <dependency>
     	<groupId>org.apache.camel</groupId>
-    	<artifactId>camel-netty-http-starter</artifactId>
+    	<artifactId>camel-netty-http</artifactId>
+    	</dependency>
+    <dependency>
+    	<groupId>org.apache.camel</groupId>
+    	<artifactId>camel-jetty</artifactId>
+    	</dependency>
+    <dependency>
+    	<groupId>org.apache.camel</groupId>
+    	<artifactId>camel-http</artifactId>
+    	</dependency>
+    <dependency>
+    	<groupId>org.apache.camel</groupId>
+    	<artifactId>camel-http-common</artifactId>
     	</dependency>
   </dependencies>
   <repositories>

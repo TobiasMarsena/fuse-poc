@@ -13,17 +13,20 @@ public class TransformRoute extends RouteBuilder {
 		
 		XmlJsonDataFormat xmlJson = new XmlJsonDataFormat();
 		
-		from("netty-http:http://0.0.0.0:8080/proxy")
+		from("netty-http:http://localhost:8080?matchOnUriPrefix=true")
 			.choice()
 				.when().simple("${header.CamelHttpMethod} != 'GET' && ${header.Content-Type} == 'application/xml'")
 					.marshal(xmlJson)
-					.toD("netty-http:"
-			                + "${headers." + Exchange.HTTP_SCHEME + "}://"
-			                + "${headers." + Exchange.HTTP_HOST + "}:"
-			                + "${headers." + Exchange.HTTP_PORT + "}"
-			                + "${headers." + Exchange.HTTP_PATH + "}")
 				.when().simple("${header.CamelHttpMethod} != 'GET' && ${header.Content-Type} == 'application/json'")
 					.unmarshal(xmlJson)
+				.when().simple("${header.CamelHttpMethod} == 'GET' && "
+						+ "${header.CamelHttpPath} == '/sap/bc/srt/wsdl/flv_10002A111AD1/bndg_url/sap/bc/srt/rfc/sap/zsd_hrgol00005/320/zws_hrgol00005/zws_hrgol00005'")
+					.removeHeaders("Camel*")
+					.setHeader(Exchange.HTTP_METHOD, constant("GET"))
+					.setHeader(Exchange.HTTP_QUERY, constant("sap-client=320"))
+					.setHeader(Exchange.HTTP_PATH, constant("/sap/bc/srt/wsdl/flv_10002A111AD1/bndg_url/sap/bc/srt/rfc/sap/zsd_hrgol00005/320/zws_hrgol00005/zws_hrgol00005"))
+					.to("http://hanaerp-ci.taspen.co.id:8500")
+					.marshal(xmlJson)
 			.end()
 		;
 	}
