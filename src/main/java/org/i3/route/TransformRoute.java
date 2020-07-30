@@ -13,7 +13,7 @@ public class TransformRoute extends RouteBuilder {
 		
 		XmlJsonDataFormat xmlJson = new XmlJsonDataFormat();
 		
-		from("netty-http:http://localhost:8080?matchOnUriPrefix=true")
+		from("netty-http:http://0.0.0.0:8080?matchOnUriPrefix=true")
 			.choice()
 				.when().simple("${header.CamelHttpMethod} != 'GET' && ${header.Content-Type} == 'application/xml'")
 					.marshal(xmlJson)
