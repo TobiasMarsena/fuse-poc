@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.i3</groupId>
   <artifactId>camel-fuse-3scale</artifactId>
-  <version>1.2.1</version>
+  <version>1.2.2</version>
   <name>Fuse :: 3Scale</name>
   <description>Fuse project with 3Scale API Management</description>
   <properties>
