@@ -20,21 +20,19 @@
             <apiProperty key="api.title" value="Hello API"/>
             <apiProperty key="api.description" value="Greetings in JSON or XML"/>
         </restConfiguration>
-        <rest bindingMode="json"	
-            id="rest-e9c64780-2ba3-4b1b-8073-c981f55498bf" path="/postJson">	
-            <post id="2843668b-a2a2-4694-ab9c-c5c75dd4ca24"	
-                outType="org.i3.model.Hello" type="org.i3.model.User">	
-                <to uri="bean:helloService?method=greetEchoPost"/>	
-            </post>	
+        <rest bindingMode="json"
+            id="rest-e9c64780-2ba3-4b1b-8073-c981f55498bf" path="/postJson">
+            <post id="2843668b-a2a2-4694-ab9c-c5c75dd4ca24"
+                outType="org.i3.model.Hello" type="org.i3.model.User">
+                <to uri="bean:helloService?method=greetEchoPost"/>
+            </post>
         </rest>
-        
         <rest id="rest-cdb365c9-047a-4bc2-97e2-f0f15176d4a1" path="/postXml">
             <post id="e6e351e5-928f-4727-9ae0-1ec5bfe8d5ba"
                 outType="org.i3.model.Hello" type="org.i3.model.User">
                 <to uri="bean:helloService?method=greetEchoPost"/>
             </post>
         </rest>
-        
         <rest bindingMode="auto"
             id="rest-a88eecfc-75d1-4a8f-b579-b1357236231c" path="/hello/{name}">
             <description>Greet User based on path parameter</description>

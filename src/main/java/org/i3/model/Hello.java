@@ -1,5 +1,7 @@
 package org.i3.model;
 
+import java.util.Map;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
@@ -11,6 +13,9 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @XmlRootElement(name = "hello")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Hello {
+	
+	@XmlElement
+	private Map<String, Object> headers;
 	@XmlElement
 	private String greeting;
 	@XmlElement
@@ -40,10 +45,17 @@ public class Hello {
 		this.user = user;
 	}
 
+	public Map<String, Object> getHeaders() {
+		return headers;
+	}
+
+	public void setHeaders(Map<String, Object> headers) {
+		this.headers = headers;
+	}
+
 	@Override
 	public String toString() {
-		return "Hello [greeting=" + greeting + ", time=" + time + ", user=" + user + "]";
+		return "Hello [headers=" + headers + ", greeting=" + greeting + ", time=" + time + ", user=" + user + "]";
 	}
 	
-
 }
