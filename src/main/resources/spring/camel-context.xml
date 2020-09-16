@@ -19,6 +19,8 @@
             <apiProperty key="api.version" value="1.2.0"/>
             <apiProperty key="api.title" value="Hello API"/>
             <apiProperty key="api.description" value="Greetings in JSON or XML"/>
+            <apiProperty key="api.specification.contentType.json" value="application/vnd.oai.openapi+json;version=2.0"/>
+            <apiProperty key="api.specification.contentType.yaml" value="application/vnd.oai.openapi;version=2.0"/>
         </restConfiguration>
         <rest bindingMode="json"
             id="rest-e9c64780-2ba3-4b1b-8073-c981f55498bf" path="/postJson">
