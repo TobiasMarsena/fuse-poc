@@ -13,7 +13,7 @@
                 library="Jackson" prettyPrint="false"
                 useDefaultObjectMapper="true" useList="false"/>
         </dataFormats>
-        <restConfiguration apiContextPath="api-docs"
+        <restConfiguration apiContextPath="api-docs" scheme="http" contextPath="/"
             apiVendorExtension="true" component="spark-rest" port="8080">
             <!-- setup swagger api descriptions -->
             <apiProperty key="api.version" value="1.2.0"/>
